@@ -92,7 +92,13 @@ setInterval(createHeart, 500);
 
 // music
 function playMusic() {
-    document.getElementById("bgMusic").play();
+    const music = document.getElementById("bgMusic");
+
+    music.play().then(() => {
+        console.log("Music started");
+    }).catch(err => {
+        console.log("Error:", err);
+    });
 }
 
 // start game
