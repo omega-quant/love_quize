@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Couple Quest 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <div class="card">
+        <h1>💖 Couple Quest</h1>
+
+        <div class="player-badge" id="playerTurn">
+            Player 1's Turn
+        </div>
+
+        <div class="timer" id="timer">⏳ 15s</div>
+
+        <div class="question-box">
+            <p id="question">Loading...</p>
+        </div>
+
+        <input type="text" id="answerInput" placeholder="Type your answer..." />
+
+        <button onclick="submitAnswer()">Submit</button>
+
+        <button onclick="playMusic()">🎵 Play Music</button>
+
+        <p id="result"></p>
+    </div>
+
+    <!-- hearts animation -->
+    <div class="hearts"></div>
+
+    <!-- background music -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
