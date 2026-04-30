@@ -1,4 +1,3 @@
-let currentPlayer = 1;
 let currentQuestion = 0;
 
 let timeLeft = 15;
@@ -16,9 +15,6 @@ const questions = [
 function loadQuestion() {
     document.getElementById("question").innerText =
         questions[currentQuestion].question;
-
-    document.getElementById("playerTurn").innerText =
-        "Player " + currentPlayer + "'s Turn";
 
     document.getElementById("result").innerText = "";
 
@@ -39,13 +35,11 @@ function startTimer() {
         if (timeLeft <= 0) {
             clearInterval(timer);
 
-            document.getElementById("result").innerText = "⏰ Time's up!";
-            document.getElementById("result").style.color = "yellow";
+            document.getElementById("result").innerText = "⏰ Time's up! Try again.";
+            document.getElementById("result").style.color = "orange";
 
-            // switch player
-            currentPlayer = currentPlayer === 1 ? 2 : 1;
-
-            loadQuestion();
+            // reload same question
+            startTimer();
         }
     }, 1000);
 }
@@ -58,26 +52,24 @@ function submitAnswer() {
     let result = document.getElementById("result");
 
     if (userAnswer === questions[currentQuestion].answer) {
-        result.innerText = "Wow Manisha that's Correct ❤️";
+        result.innerText = "Correct ❤️";
         result.style.color = "lightgreen";
 
         currentQuestion++;
 
         if (currentQuestion >= questions.length) {
             document.querySelector(".card").innerHTML =
-                "<h1>🎉 You both completed the game!</h1><p>💖 Perfect Couple!</p>";
+                "<h1>🎉 You completed the journey!</h1><p>💖 Beautiful memories!</p>";
             return;
         }
-
-        currentPlayer = currentPlayer === 1 ? 2 : 1;
 
         document.getElementById("answerInput").value = "";
 
         loadQuestion();
 
     } else {
-        result.innerText = "Wrong 😢";
-        result.style.color = "orange";
+        result.innerText = "Wrong 😢 Try again!";
+        result.style.color = "yellow";
     }
 }
 
@@ -98,7 +90,7 @@ function createHeart() {
 
 setInterval(createHeart, 500);
 
-// music play
+// music
 function playMusic() {
     document.getElementById("bgMusic").play();
 }
